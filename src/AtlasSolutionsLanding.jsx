@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ContactForm from "./components/ContactForm";
+import NavBar from "./components/NavBar";
+import { scrollToSection } from "./utils/scrollToSection";
 
 // Simple icon components (no external UI libs needed)
 const Check = (props) => (
@@ -43,32 +45,7 @@ export default function AtlasSolutionsLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
       {/* NAVBAR */}
-      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-3">
-              {/* AS Monogram */}
-              <div className="relative h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-slate-950 font-black">
-                AS
-              </div>
-              <div className="leading-tight">
-                <p className="text-lg sm:text-xl font-semibold">Atlas Solutions</p>
-                <p className="text-xs sm:text-sm text-slate-300">International Trade & Materials</p>
-              </div>
-            </div>
-            <nav className="hidden md:flex items-center gap-8 text-sm">
-              <a href="#services" className="hover:text-cyan-300 transition">Services</a>
-              <a href="#materials" className="hover:text-cyan-300 transition">Materials</a>
-              <a href="#process" className="hover:text-cyan-300 transition">Process</a>
-              <a href="#about" className="hover:text-cyan-300 transition">About</a>
-              <a href="#contact" className="hover:text-cyan-300 transition">Contact</a>
-            </nav>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 px-4 py-2 text-sm">
-              Get a Quote <ArrowRight className="h-4 w-4"/>
-            </a>
-          </div>
-        </div>
-      </header>
+      <NavBar />
 
         {/* HERO */}
         <section
@@ -138,6 +115,7 @@ export default function AtlasSolutionsLanding() {
               >
                 <a
                   href="#contact"
+                  onClick={(e)=>scrollToSection(e, "contact")}
                   className="rounded-2xl px-5 py-3 bg-gradient-to-r from-[#AEB6C1] to-[#6B7684]
                             text-slate-900 font-semibold shadow-lg"
                 >
@@ -145,6 +123,7 @@ export default function AtlasSolutionsLanding() {
                 </a>
                 <a
                   href="#materials"
+                  onClick={(e)=>scrollToSection(e, "materials")}
                   className="rounded-2xl px-5 py-3 border border-white/15 hover:bg-white/5"
                 >
                   Explore Materials
@@ -201,7 +180,7 @@ export default function AtlasSolutionsLanding() {
       <section id="materials" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 pb-16">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl sm:text-3xl font-bold">Materials We Source</h2>
-          <a href="#contact" className="text-sm underline underline-offset-4 hover:text-cyan-300">Don’t see yours? Ask us →</a>
+          <a href="#contact" onClick={(e)=>scrollToSection(e, "contact")} className="text-sm underline underline-offset-4 hover:text-cyan-300">Don’t see yours? Ask us →</a>
         </div>
         <div className="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
