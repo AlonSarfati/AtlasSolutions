@@ -127,7 +127,7 @@ export default function AtlasSolutionsLanding() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 High-grade materials, vetted suppliers, compliant logistics. From RFQ to
-                on-time delivery — certainty at scale.
+                on-time delivery - certainty at scale.
               </motion.p>
 
               <motion.div
@@ -183,7 +183,7 @@ export default function AtlasSolutionsLanding() {
             {
               icon: <Shield className="h-6 w-6"/>,
               title: 'Compliance & QA',
-              desc: 'Documentation, CoA/CoC, REACH/ROHS, and vendor audits—handled by default.'
+              desc: 'Documentation, CoA/CoC, REACH/ROHS, and vendor audits - handled by default.'
             }
           ].map((s) => (
             <div key={s.title} className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
@@ -229,23 +229,73 @@ export default function AtlasSolutionsLanding() {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-2xl sm:text-3xl font-bold">How We Work</h2>
-        <div className="mt-8 grid lg:grid-cols-4 gap-6">
-          {[
-            {step:'01', title:'Scope & Specs', desc:'Share target specs, volumes, and delivery terms.'},
-            {step:'02', title:'Sourcing & Bids', desc:'We shortlist vetted vendors and negotiate quotes.'},
-            {step:'03', title:'QA & Compliance', desc:'Samples, CoA/CoC, and documentation verified.'},
-            {step:'04', title:'Logistics & Delivery', desc:'Door‑to‑door shipping with live updates.'},
-          ].map((p) => (
-            <div key={p.step} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <span className="text-sm font-mono text-cyan-300">{p.step}</span>
-              <h3 className="mt-2 font-semibold">{p.title}</h3>
-              <p className="mt-2 text-sm text-slate-300">{p.desc}</p>
-            </div>
-          ))}
+      <section id="process" className="relative py-24 bg-gradient-to-b from-slate-950 to-slate-900 text-slate-200 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-3xl font-bold mb-12 text-left sm:text-left text-transparent bg-clip-text bg-gradient-to-r from-[#AEB6C1] to-[#6B7684]">
+            How We Work
+          </h2>
+          <div className="grid md:grid-cols-4 gap-12 relative">
+            {[
+              { title: "Inquiry", desc: "You tell us what you need — materials, specifications, and delivery targets." },
+              { title: "Sourcing", desc: "We identify the right producers and negotiate the most competitive terms." },
+              { title: "Quality Assurance", desc: "We ensure every product meets international standards and full compliance." },
+              { title: "Logistics", desc: "We coordinate freight, insurance, and customs to deliver on time, every time." },
+            ].map((step, i) => (
+              <div key={i} className="relative">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#AEB6C1] transition-all duration-300">
+                  <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                  <p className="text-slate-400 text-sm">{step.desc}</p>
+                </div>
+
+                {/* Connector Arrow (not for last card) */}
+                { i < 3 && (
+                  <svg
+                    className="pointer-events-none hidden md:block absolute right-[-70px] top-1/2 -translate-y-1/2"
+                    width="100"
+                    height="60"
+                    viewBox="0 0 100 60"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <linearGradient id={`grad-${i}`} x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stopColor="#67e8f9" />
+                        <stop offset="100%" stopColor="#818cf8" />
+                      </linearGradient>
+                      <marker id={`head-${i}`} viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                        <path d="M0,0 L10,5 L0,10 z" fill="#818cf8" />
+                      </marker>
+                      <filter id={`glow-${i}`} x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#67e8f9" floodOpacity="0.25" />
+                      </filter>
+                    </defs>
+
+                    <path
+                      d={
+                        i % 2 === 0
+                          ? "M5,30 C40,10 60,10 95,30"   // gentler top curve
+                          : "M5,30 C40,50 60,50 95,30"   // gentler bottom curve
+                      }
+                      stroke={`url(#grad-${i})`}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      filter={`url(#glow-${i})`}
+                      markerEnd={`url(#head-${i})`}
+                    />
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
+
+        <div className="absolute inset-0 bg-[radial-gradient(60%_40%_at_50%_20%,rgba(174,182,193,0.10),transparent_70%)]" />
       </section>
+
+
+
+
 
       {/* ABOUT */}
       <section id="about" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
