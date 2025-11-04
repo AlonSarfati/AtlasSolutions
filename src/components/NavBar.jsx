@@ -9,9 +9,6 @@ export default function NavBar() {
         <div className="flex items-center justify-between py-4">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="relative h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-slate-950 font-black">
-              AS
-            </div>
             <div className="leading-tight">
               <p className="text-lg sm:text-xl font-semibold">Atlas Solutions</p>
               <p className="text-xs sm:text-sm text-slate-300">International Trade & Materials</p>
